@@ -12,8 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/group_divider"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20pt"
         android:text="@string/simple_calculator"
+        android:textAlignment="center"
         android:textSize="40sp" />
 
     <GridLayout
@@ -26,17 +27,20 @@
         >
 
         <EditText
+            android:layout_gravity="center"
             android:id="@+id/editText1"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:inputType="number"
-            />
+            android:autofillHints="" />
 
         <EditText
+            android:layout_gravity="center"
             android:id="@+id/editText2"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:inputType="number" />
+            android:inputType="number"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/divide"

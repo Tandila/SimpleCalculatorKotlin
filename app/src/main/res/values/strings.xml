@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="activity_1">Activity 1</string>
+    <string name="simple_calculator">simple calculator</string>
+    <string name="divider">/</string>
+    <string name="multiplier">*</string>
+    <string name="pluser">+</string>
+    <string name="minuser">-</string>
+</resources>

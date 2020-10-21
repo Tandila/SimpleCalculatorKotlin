@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         if(editText1.text.isNotEmpty() && editText2.text.isNotEmpty()) {
             val result = editText1.text.toString().toInt() + editText2.text.toString().toInt()
             val intent = Intent(this, Result::class.java).apply {
-                putExtra("Result", result.toString())
+                putExtra("Result", editText1.text.toString()+ "+" + editText2.text.toString() + "=" + result.toString())
             }
             startActivity(intent)
         }
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         if(editText1.text.isNotEmpty() && editText2.text.isNotEmpty()) {
             val result = editText1.text.toString().toInt() - editText2.text.toString().toInt()
             val intent = Intent(this, Result::class.java).apply {
-                putExtra("Result", result.toString())
+                putExtra("Result", editText1.text.toString()+ "-" + editText2.text.toString() + "=" + result.toString())
             }
             startActivity(intent)
         }
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         if(editText1.text.isNotEmpty() && editText2.text.isNotEmpty()) {
             val result = editText1.text.toString().toInt() * editText2.text.toString().toInt()
             val intent = Intent(this, Result::class.java).apply {
-                putExtra("Result", result.toString())
+                putExtra("Result", editText1.text.toString()+ "*" + editText2.text.toString() + "=" + result.toString())
             }
             startActivity(intent)
         }
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             }
             val result = editText1.text.toString().toInt() / editText2.text.toString().toInt()
             val intent = Intent(this, Result::class.java).apply {
-                putExtra("Result", result.toString())
+                putExtra("Result", editText1.text.toString()+ "/" + editText2.text.toString() + "=" + result.toString())
             }
             startActivity(intent)
         }

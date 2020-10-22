@@ -11,10 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/group_divider"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="20pt"
         android:text="@string/simple_calculator"
         android:textAlignment="center"
+        android:textColor="#D81B60"
         android:textSize="40sp" />
 
     <GridLayout
@@ -27,19 +28,27 @@
         >
 
         <EditText
-            android:layout_gravity="center"
             android:id="@+id/editText1"
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
+            android:maxWidth="100dp"
             android:layout_height="match_parent"
-            android:inputType="number"
+            android:hint="@string/number_1"
+            android:textSize="18sp"
+            android:textColorHint="#FF979797"
+            android:inputType="numberDecimal"
             android:autofillHints="" />
 
         <EditText
-            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
             android:id="@+id/editText2"
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:inputType="number"
+            android:maxWidth="100dp"
+            android:textSize="18sp"
+            android:hint="@string/number_2"
+            android:textColorHint="#FF979797"
+            android:inputType="numberDecimal"
+
             android:autofillHints="" />
 
         <Button
@@ -47,28 +56,47 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/divider"
-            android:onClick="divide"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:background="#00574B"
+            android:onClick="clickedButton"
+            android:layout_marginBottom="10dp"
+            android:tag="/"
             />
         <Button
             android:id="@+id/multiply"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/multiplier"
-            android:onClick="multiply"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:background="#00574B"
+            android:onClick="clickedButton"
+            android:layout_marginStart="20dp"
+            android:tag="*"
             />
         <Button
             android:id="@+id/plus"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/pluser"
-            android:onClick="plus"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:background="#00574B"
+            android:onClick="clickedButton"
+            android:tag="+"
             />
         <Button
+            android:layout_marginStart="20dp"
             android:id="@+id/minus"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/minuser"
-            android:onClick="minus"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:background="#00574B"
+            android:onClick="clickedButton"
+            android:tag="-"
             />
     </GridLayout>
 

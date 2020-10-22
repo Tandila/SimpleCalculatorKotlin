@@ -3,9 +3,8 @@ package com.example.calculator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Button
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,69 +13,32 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+    private val empty = "Please enter both numbers"
+    private val byZero = "You can't divide by 0 !"
 
-    fun plus(view: View) {
+    fun clickedButton(view: View) {
+        val symbol = view.tag.toString()
         if(editText1.text.isNotEmpty() && editText2.text.isNotEmpty()) {
-            val result = editText1.text.toString().toInt() + editText2.text.toString().toInt()
-            val intent = Intent(this, Result::class.java).apply {
-                putExtra("Result", editText1.text.toString()+ "+" + editText2.text.toString() + "=" + result.toString())
-            }
-            startActivity(intent)
-        }
-        else {
-            val intent = Intent(this, Result::class.java)
-            intent.putExtra("Result", "isEmpty!")
-            startActivity(intent)
-        }
-    }
-
-    fun minus(view: View) {
-        if(editText1.text.isNotEmpty() && editText2.text.isNotEmpty()) {
-            val result = editText1.text.toString().toInt() - editText2.text.toString().toInt()
-            val intent = Intent(this, Result::class.java).apply {
-                putExtra("Result", editText1.text.toString()+ "-" + editText2.text.toString() + "=" + result.toString())
-            }
-            startActivity(intent)
-        }
-        else {
-            val intent = Intent(this, Result::class.java)
-            intent.putExtra("Result", "isEmpty!")
-            startActivity(intent)
-        }
-    }
-    fun multiply(view: View) {
-        if(editText1.text.isNotEmpty() && editText2.text.isNotEmpty()) {
-            val result = editText1.text.toString().toInt() * editText2.text.toString().toInt()
-            val intent = Intent(this, Result::class.java).apply {
-                putExtra("Result", editText1.text.toString()+ "*" + editText2.text.toString() + "=" + result.toString())
-            }
-            startActivity(intent)
-        }
-        else {
-            val intent = Intent(this, Result::class.java)
-            intent.putExtra("Result", "isEmpty!")
-            startActivity(intent)
-        }
-    }
-    fun divide(view: View) {
-        if(editText1.text.isNotEmpty() && editText2.text.isNotEmpty()) {
-            if (editText2.text.toString().toInt() == 0) {
-                val intent = Intent(this, Result::class.java).apply {
-                    putExtra("Result", "You cant divide by 0 !")
-                }
-                startActivity(intent)
+           val firstNum = editText1.text.toString().toBigDecimal()
+           val secondNum = editText2.text.toString().toBigDecimal()
+            if (secondNum.toInt() == 0 && symbol == "/") {
+                Toast.makeText(this, byZero, Toast.LENGTH_SHORT).show()
                 return
             }
-            val result = editText1.text.toString().toInt() / editText2.text.toString().toInt()
+           val res = when(symbol) {
+                "-" -> firstNum - secondNum
+                "+" -> firstNum + secondNum
+                "*" -> firstNum * secondNum
+                "/" -> firstNum / secondNum
+               else -> return
+           }
             val intent = Intent(this, Result::class.java).apply {
-                putExtra("Result", editText1.text.toString()+ "/" + editText2.text.toString() + "=" + result.toString())
+                putExtra("Result", editText1.text.toString() + " " + symbol + " " + editText2.text.toString() + " = " + res.toString())
             }
             startActivity(intent)
         }
         else {
-            val intent = Intent(this, Result::class.java)
-            intent.putExtra("Result", "isEmpty!")
-            startActivity(intent)
+            Toast.makeText(this, empty, Toast.LENGTH_SHORT).show()
         }
     }
 }

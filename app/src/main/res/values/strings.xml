@@ -6,4 +6,6 @@
     <string name="multiplier">*</string>
     <string name="pluser">+</string>
     <string name="minuser">-</string>
+    <string name="number_1">Number 1</string>
+    <string name="number_2">Number 2</string>
 </resources>

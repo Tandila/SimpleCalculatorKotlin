@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.math.BigDecimal
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,21 +20,21 @@ class MainActivity : AppCompatActivity() {
     fun clickedButton(view: View) {
         val symbol = view.tag.toString()
         if(editText1.text.isNotEmpty() && editText2.text.isNotEmpty()) {
-           val firstNum = editText1.text.toString().toBigDecimal()
-           val secondNum = editText2.text.toString().toBigDecimal()
-            if (secondNum.toInt() == 0 && symbol == "/") {
+           val firstNum: BigDecimal = editText1.text.toString().toBigDecimal()
+           val secondNum: BigDecimal = editText2.text.toString().toBigDecimal()
+            if (secondNum.toString() == "0" && symbol == "/") {
                 Toast.makeText(this, byZero, Toast.LENGTH_SHORT).show()
                 return
             }
-           val res = when(symbol) {
+           val res: BigDecimal = when(symbol) {
                 "-" -> firstNum - secondNum
                 "+" -> firstNum + secondNum
                 "*" -> firstNum * secondNum
                 "/" -> firstNum / secondNum
                else -> return
            }
-            val intent = Intent(this, Result::class.java).apply {
-                putExtra("Result", editText1.text.toString() + " " + symbol + " " + editText2.text.toString() + " = " + res.toString())
+            val intent: Intent = Intent(this, Result::class.java).apply {
+                putExtra("Result", "$firstNum $symbol $secondNum = $res")
             }
             startActivity(intent)
         }
